@@ -36,6 +36,10 @@ spec:
           awsElasticBlockStore:
             volumeID: vol-06e2f798b410464be
             fsType: ext4
+  tolerations:
+    - key: node-role.kubernetes.io/control-plane
+      operator: Exists
+      effect: NoSchedule
 
       initContainers:
         - name: busybox
