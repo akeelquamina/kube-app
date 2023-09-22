@@ -14,7 +14,7 @@ spec:
       labels:
         app: vprodb
     spec:
-      containers:
+    containers:
         - name: vprodb
           image: akeelquamina/vprofiledb:V1
           volumeMounts:
@@ -29,15 +29,15 @@ spec:
                 secretKeyRef:
                   name: app-secret
                   key: db-pass
-      nodeSelector:
+    nodeSelector:
         zone: us-east-2a
-      volumes:
+    volumes:
         - name: vpro-db-data
           awsElasticBlockStore:
             volumeID: vol-01ccdc11336a0b1ee
             fsType: ext4
 
-      initContainers:
+    initContainers:
         - name: busybox
           image: busybox:latest
           args: ["rm", "-rf", "/var/lib/mysql/lost+found"]
